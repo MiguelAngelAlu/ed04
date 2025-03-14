@@ -9,14 +9,14 @@ import java.util.List;
  * @author Miguel Ángel
  * @version 1.0 14/03/2025
  */
-public class Agenda {
-    private List<Contacto> contacts; // Lista de Contacto
+public class agenda implements interfazAgenda {
+    private List<Persona> contacts; // Lista de Contacto
 
     /**
      *  Muestra un array de números
      * @return
      */
-    public Agenda() {
+    public agenda() {
         this.contacts = new ArrayList<>();
     }
 
@@ -25,9 +25,10 @@ public class Agenda {
      * @param name String con el nombre del contacto
      * @param phone String con el número del contacto
      */
+    @Override
     public void addContact(String name, String phone) {
         boolean exists = false;
-        for (Contacto c : contacts) {
+        for (Persona c : contacts) {
             if (c.getName().equalsIgnoreCase(name)) {
                 exists = true;
                 c.getPhones().add(phone);
@@ -36,7 +37,7 @@ public class Agenda {
         }
 
         if (!exists) {
-            Contacto newContact = new Contacto(name, phone);
+            Persona newContact = new Persona(name, phone);
             contacts.add(newContact);
         }
     }
@@ -45,11 +46,12 @@ public class Agenda {
      * Nombre del contacto a eliminar, busca el nombre
      * @param name String con el nombre a eliminar
      */
+    @Override
     public void removeContact(String name) {
-        Iterator<Contacto> it = contacts.iterator();
+        Iterator<Persona> it = contacts.iterator();
 
         while (it.hasNext()) {
-            Contacto c = it.next();
+            Persona c = it.next();
 
             if (c.getName().equalsIgnoreCase(name)) {
                 it.remove();
@@ -63,8 +65,9 @@ public class Agenda {
      * @param oldPhone String con el número antigüo del contacto
      * @param newPhone String con el número nuev del contacto
      */
+    @Override
     public void modifyPhoneNumber(String name, String oldPhone, String newPhone) {
-        for (Contacto c : contacts) {
+        for (Persona c : contacts) {
             if (c.getName().equalsIgnoreCase(name)) {
                 List<String> phones = c.getPhones();
 
@@ -81,7 +84,8 @@ public class Agenda {
      * Muestra los contactos
      * @return devuelve una lista
      */
-    public List<Contacto> getContacts() {
+    @Override
+    public List<Persona> getContacts() {
         return this.contacts;
     }
 }

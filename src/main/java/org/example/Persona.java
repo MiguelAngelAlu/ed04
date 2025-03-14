@@ -8,7 +8,7 @@ import java.util.List;
  * @author Miguel Ángel
  * @version 1.0 14/03/2025
  */
-class Contacto {
+class Persona {
     private String name;
     private List<String> phones;
 
@@ -18,10 +18,10 @@ class Contacto {
      * @param phone String con el número del contacto
      * @return devuelve un array
      */
-    public Contacto(String name, String phone) {
-        this.name = name;
-        this.phones = new ArrayList<>();
-        this.phones.add(phone);
+    public Persona(String name, String phone) {
+        this.setName(name);
+        this.setPhones(new ArrayList<>());
+        this.getPhones().add(phone);
     }
 
     /**
@@ -38,5 +38,13 @@ class Contacto {
      */
     public List<String> getPhones() {
         return this.phones;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhones(List<String> phones) {
+        this.phones = phones;
     }
 }
