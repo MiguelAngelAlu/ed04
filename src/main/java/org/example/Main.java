@@ -1,5 +1,10 @@
 package org.example;
 
+/**
+ * La clase Main
+ * @author Miguel Ángel
+ * @version 1.0 14/03/2025
+ */
 public class Main {
     public static void main(String[] args) {
         // Crear una nueva agenda.
